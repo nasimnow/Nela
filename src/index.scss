@@ -65,11 +65,16 @@ textarea {
     padding-left: 20px;
     border-radius: 7px;
     background-color: aquamarine;
-    b {
-      font-size: 20px;
-    }
-    p {
+    .title {
       padding-top: 5px;
+      font-size: 16px;
+      font-weight: 600;
+      color: #000;
+    }
+    .description {
+      font-size: 14px;
+      color: #222;
+      padding-bottom: 5px;
     }
   }
 }

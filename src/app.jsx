@@ -1,9 +1,10 @@
 import { useEffect, useRef, useState } from "preact/hooks";
+import useLocalStorage from "./utils/useLocalStorage";
 
 export function App(props) {
   const [text, setText] = useState("");
   const [clickNo, setClickNo] = useState(0);
-  const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useLocalStorage("nela-todos", []);
   const textRef = useRef(null);
 
   useEffect(() => {}, [text]);
@@ -11,9 +12,12 @@ export function App(props) {
   const handleKeyPress = (e) => {
     if (e.keyCode === 13) {
       if (clickNo === 1) {
-        let [title, description] = text.split("\n");
-        setTodos([...todos, { title: title, description: description }]);
-        console.log([...todos, { title: title, description: description }]);
+        let [title, ...description] = text.split("\n");
+        setTodos([
+          ...todos,
+          { title: title, description: description.join("\n") },
+        ]);
+
         setText("");
         e.preventDefault();
         setClickNo(0);
@@ -30,8 +34,8 @@ export function App(props) {
       <div className="todos">
         {todos.map((item) => (
           <div>
-            <b>{item.title}</b>
-            <p>{item.description}</p>
+            <p className="title">{item.title}</p>
+            <p className="description">{item.description}</p>
           </div>
         ))}
       </div>
