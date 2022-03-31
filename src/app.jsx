@@ -13,17 +13,25 @@ export function App(props) {
     if (e.keyCode === 13) {
       if (clickNo === 1) {
         let [title, ...description] = text.split("\n");
+
         setTodos([
           ...todos,
-          { title: title, description: description.join("\n") },
+          {
+            id: Date.now(),
+            title: title,
+            description: description.join("\n"),
+          },
         ]);
-
         setText("");
         e.preventDefault();
         setClickNo(0);
       }
       setClickNo((old) => old + 1);
     } else setClickNo(0);
+  };
+
+  const deleteTodo = (id) => {
+    setTodos((items) => items.filter((todo) => todo.id !== id));
   };
 
   return (
@@ -33,7 +41,10 @@ export function App(props) {
       </div>
       <div className="todos">
         {todos.map((item) => (
-          <div>
+          <div
+            style={{ postion: "relative" }}
+            ondblclick={() => deleteTodo(item.id)}
+          >
             <p className="title">{item.title}</p>
             <p className="description">{item.description}</p>
           </div>
