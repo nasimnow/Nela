@@ -20,6 +20,7 @@ export function Home(props) {
     let textWithoutLastWord = text.slice(0, text.length - lastWord.length);
     //fastest search than any packages
 
+    //TODO find all words atrts with and if one sugggetion ignored show next
     let wordSuggestion = wordsList.find(
       (word) => word.startsWith(lastWord) && word !== lastWord
     );

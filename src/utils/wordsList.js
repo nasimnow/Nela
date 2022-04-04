@@ -364,7 +364,6 @@ let wordsList = [
   "ground",
   "interest",
   "reach",
-  "react",
   "fast",
   "verb",
   "sing",
@@ -1000,4 +999,6 @@ let wordsList = [
   "shell",
   "neck",
 ];
-export default wordsList;
+
+let newWords = ["react", "task", "bug", "provider"];
+export default [...wordsList, ...newWords];
