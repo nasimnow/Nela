@@ -1,8 +1,6 @@
-import { useEffect, useRef, useState } from "preact/hooks";
 import useLocalStorage from "@/hooks/useLocalStorage";
 import wordsList from "@/utils/wordsList";
-import caseCheck from "@/utils/caseCheck";
-import { matchSorter } from "match-sorter";
+import { useEffect, useRef, useState } from "preact/hooks";
 
 export function Home(props) {
   const [text, setText] = useState("");
